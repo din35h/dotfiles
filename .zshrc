@@ -1,0 +1,1 @@
+/home/dinesh/.zprezto/runcoms/zshrc
