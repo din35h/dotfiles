@@ -1,0 +1,218 @@
+mpd_music_dir = "home/dinesh/Music"
+mpd_host = "127.0.0.1"
+mpd_port = "6600"
+mpd_connection_timeout = "5"
+
+audio_output  {
+        type            "fifo"
+        name            "Visualizer feed"
+        path            "/tmp/mpd.fifo"
+        format          "44100:16:2"
+               }
+##### music visualizer #####
+# {{{
+## If you set format to 44100:16:2, make it 'yes'.
+visualizer_in_stereo = "yes"
+visualizer_fifo_path = "/tmp/mpd.fifo"
+#visualizer_output_name = "fifo"
+visualizer_type = "spectrum"
+visualizer_look = "◆▍"
+# }}}
+
+##### system encoding #####
+# {{{
+system_encoding = "utf-8"
+# }}}
+
+##### delays #####
+# {{{
+playlist_disable_highlight_delay = "1"
+#message_delay_time = "5"
+# }}}
+
+##### song format #####
+# {{{
+##
+## for song format you can use:
+##
+## %l - length
+## %f - filename
+## %D - directory
+## %a - artist
+## %A - album artist
+## %t - title
+## %b - album
+## %y - year
+## %n - track number (01/12 -> 01)
+## %N - full track info (01/12 -> 01/12)
+## %g - genre
+## %c - composer
+## %p - performer
+## %d - disc
+## %C - comment
+## $R - begin right alignment
+##
+## e.g. {%a - %t}|{%f}
+## e.g. to make album take max. 20 terminal cells, use '%20b'.
+##
+## available colors:
+##
+## - 0 - default window color (discards all other colors)
+## - 1 - black
+## - 2 - red
+## - 3 - green
+## - 4 - yellow
+## - 5 - blue
+## - 6 - magenta
+## - 7 - cyan
+## - 8 - white
+## - 9 - end of current color
+##
+## Note: colors can be nested.
+##
+
+
+
+song_list_format = "{$2%a $9$2❯$9} $6{%t}|{%f}"
+#song_status_format = "{{%a{ \"%b\"{ (%y)}} - }{%t}}|{%f}"
+song_status_format = " $2%a $4⟫$3⟫ $8%t $4⟫$3⟫ $5%b "
+#song_library_format = "{%n - }{%t}|{%f}"
+#tag_editor_album_format = "{(%y) }%b"
+#
+##
+## Note: Below variables are for alternative version of user's interface.
+## Their syntax supports all tags and colors listed above plus some extra
+## markers used for text attributes. They are followed by character '$'.
+## After that you can put:
+##
+## - b - bold text
+## - u - underline text
+## - r - reverse colors
+## - a - use alternative character set
+##
+## If you don't want to use an attribute anymore, just put it again, but
+## this time insert character '/' between '$' and attribute character,
+## e.g. {$b%t$/b}|{$r%f$/r} will display bolded title tag or filename
+## with reversed colors.
+##
+#
+alternative_header_first_line_format = "$b$1$aqqu$/a$9 {%t}|{%f} $1$atqq$/a$9$/b"
+alternative_header_second_line_format = "{{$4$b%a$/b$9}{ - $7%b$9}{ ($4%y$9)}}|{%D}"
+#
+##
+## Note: Below variables also supports
+## text attributes listed above.
+##
+#
+now_playing_prefix = "$b$6❱$9 "
+now_playing_suffix = "$/b"
+#
+browser_playlist_prefix = "($6playlist$9) "
+#
+selected_item_prefix = "$6"
+selected_item_suffix = "$9"
+#
+## colors are not supported for below variable
+#
+#song_window_title_format = "{%a - }{%t}|{%f}"
+# }}}
+
+##### columns settings #####
+# {{{
+song_columns_list_format = "(30)[black]{a:who ?} (40)[white]{t|f:what ?}"
+
+#song_columns_list_format = "(15)[blue]{a} (5)[black]{t}"
+
+# song_columns_list_format = "(8)[white]{l} (28)[cyan]{a} (28)[white]{b} (50)[cyan]{t}"
+
+# }}}
+
+##### various settings #####
+# {{{
+#execute_on_song_change = ""
+#
+playlist_display_mode = "classic" # (classic/columns)
+browser_display_mode = "classic" # (classic/columns)
+#
+discard_colors_if_item_is_selected = "yes"
+#
+#incremental_seeking = "yes"
+#
+seek_time = "5"
+#
+# progressbar_look = "─╼"
+#progressbar_look = "██░"
+#progressbar_look = "━─"
+progressbar_look = "▀▀ "
+#
+user_interface = "classic" # (classic/alternative)
+#
+default_space_mode = "add" # (add/select)
+#
+header_visibility = "no"
+statusbar_visibility = "no"
+#titles_visibility = "no"
+#
+follow_now_playing_lyrics = "yes"
+fetch_lyrics_for_current_song_in_background = "no"
+store_lyrics_in_song_dir = "yes"
+#
+#ncmpc_like_songs_adding = "yes" # (enabled - add/remove, disabled - always add)
+#
+#show_hidden_files_in_local_browser = "no"
+#
+#display_screens_numbers_on_start = "no"
+#
+## - "previous" - switch between current and last used screen
+## - "sequence: 2 -> 9 -> 5" - switch between given sequence of screens.
+#screen_switcher_mode = "sequence: 2 -> 3"
+#
+locked_screen_width_part = "50"
+ask_for_locked_screen_width_part = "yes"
+#
+#startup_screen = "2"
+#
+clock_display_seconds = "no"
+#
+regular_expressions = "extended" # (basic/extended)
+#
+ignore_leading_the = "yes"
+#
+mouse_support = "no"
+#
+empty_tag_marker = "<none>"
+#
+display_bitrate = "yes"
+#allow_physical_files_deletion = "no"
+#allow_physical_directories_deletion = "no"
+external_editor = "vim"
+#use_console_editor = "vim" # (set to yes, if your editor is console app)
+# }}}
+
+##### colors definitions #####
+# {{{
+colors_enabled = "yes"
+empty_tag_color = "white"
+header_window_color = "default"
+volume_color = "cyan"
+state_line_color = "white"
+state_flags_color = "default"
+main_window_color = "default"
+color1 = "red"
+color2 = "cyan"
+main_window_highlight_color = "magenta"
+progressbar_color = "white"
+progressbar_elapsed_color = "magenta"
+statusbar_color = "default"
+alternative_ui_separator_color = "black"
+active_column_color = "magenta"
+visualizer_color = "yellow"
+window_border_color = "magenta"
+active_window_border = "magenta"
+# }}}
+
+# vim :fdm=marker:
+
+autocenter_mode = "yes"
+
+
